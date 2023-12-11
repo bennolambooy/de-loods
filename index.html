@@ -50,9 +50,14 @@
             text-align: left;
             font-size: 0.9em;
             color: #666;
-            background-color: #fff; /* Toegevoegd */
-            padding: 10px; /* Toegevoegd */
-            z-index: 1; /* Toegevoegd */
+            background-color: #fff;
+            padding: 10px;
+            z-index: 1;
+        }
+
+        .category-container {
+            display: flex;
+            position: relative;
         }
 
         .category:hover + .category-info {
@@ -91,11 +96,6 @@
             font-size: 0.9em;
             color: #666;
         }
-
-        .category-container {
-            display: flex;
-            position: relative; /* Toegevoegd */
-        }
     </style>
 </head>
 
@@ -104,9 +104,9 @@
 
     <div class="categories">
         <div class="category-container">
-            <p class="category" onmouseover="showInfo('vormgeving')" onmouseout="hideInfo('vormgeving')">vormgeving</p>
-            <p class="category" onmouseover="showInfo('bouw')" onmouseout="hideInfo('bouw')">bouw</p>
-            <p class="category" onmouseover="showInfo('ontwerp')" onmouseout="hideInfo('ontwerp')">ontwerp</p>
+            <p class="category" onmouseover="showInfo('vormgeving')" onmouseout="hideInfo('vormgeving')" onclick="toggleInfo('vormgeving')">vormgeving</p>
+            <p class="category" onmouseover="showInfo('bouw')" onmouseout="hideInfo('bouw')" onclick="toggleInfo('bouw')">bouw</p>
+            <p class="category" onmouseover="showInfo('ontwerp')" onmouseout="hideInfo('ontwerp')" onclick="toggleInfo('ontwerp')">ontwerp</p>
         </div>
         <p class="category-info vormgeving-info">
             Grafische vormgeving voor verschillende klanten.
@@ -133,6 +133,12 @@
         function hideInfo(category) {
             const infoClass = `.category-info.${category}-info`;
             document.querySelector(infoClass).style.display = 'none';
+        }
+
+        function toggleInfo(category) {
+            const infoClass = `.category-info.${category}-info`;
+            const infoElement = document.querySelector(infoClass);
+            infoElement.style.display = (infoElement.style.display === 'block' ? 'none' : 'block');
         }
     </script>
 </body>
