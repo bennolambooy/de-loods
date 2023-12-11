@@ -40,28 +40,18 @@
             margin-right: 10px;
         }
 
-        .category:hover {
-            color: #f4994b;
-        }
-
         .category-info {
-            position: absolute;
-            display: none;
             text-align: left;
             font-size: 0.9em;
             color: #666;
-            background-color: #fff;
-            padding: 10px;
-            z-index: 1;
+            display: none;
+            margin-top: 20px;
         }
 
         .category-container {
             display: flex;
-            position: relative;
-        }
-
-        .category:hover + .category-info {
-            display: inline-block;
+            flex-direction: column;
+            align-items: center;
         }
 
         .category:not(:last-child)::after {
@@ -104,20 +94,21 @@
 
     <div class="categories">
         <div class="category-container">
-            <p class="category" onmouseover="showInfo('vormgeving')" onmouseout="hideInfo('vormgeving')" onclick="toggleInfo('vormgeving')">vormgeving</p>
-            <p class="category" onmouseover="showInfo('bouw')" onmouseout="hideInfo('bouw')" onclick="toggleInfo('bouw')">bouw</p>
-            <p class="category" onmouseover="showInfo('ontwerp')" onmouseout="hideInfo('ontwerp')" onclick="toggleInfo('ontwerp')">ontwerp</p>
+            <p class="category" onclick="toggleInfo('vormgeving')">vormgeving</p>
+            <p class="category" onclick="toggleInfo('bouw')">bouw</p>
+            <p class="category" onclick="toggleInfo('ontwerp')">ontwerp</p>
         </div>
-        <p class="category-info vormgeving-info">
-            Grafische vormgeving voor verschillende klanten.
-        </p>
-        <p class="category-info bouw-info">
-            Begeleiding en advisering van verschillende bouwprojecten.
-        </p>
-        <p class="category-info ontwerp-info">
-            Ontwerp van plekken voor thuis.
-        </p>
     </div>
+
+    <p class="category-info vormgeving-info">
+        Grafische vormgeving voor verschillende klanten.
+    </p>
+    <p class="category-info bouw-info">
+        Begeleiding en advisering van verschillende bouwprojecten.
+    </p>
+    <p class="category-info ontwerp-info">
+        Ontwerp van plekken voor thuis.
+    </p>
 
     <div class="contact-info">
         <p class="contact-text">Renske Lambooy</p>
@@ -125,20 +116,10 @@
     </div>
 
     <script>
-        function showInfo(category) {
-            const infoClass = `.category-info.${category}-info`;
-            document.querySelector(infoClass).style.display = 'block';
-        }
-
-        function hideInfo(category) {
-            const infoClass = `.category-info.${category}-info`;
-            document.querySelector(infoClass).style.display = 'none';
-        }
-
         function toggleInfo(category) {
             const infoClass = `.category-info.${category}-info`;
             const infoElement = document.querySelector(infoClass);
-            infoElement.style.display = (infoElement.style.display === 'block' ? 'none' : 'block');
+            infoElement.style.display = infoElement.style.display === 'none' ? 'block' : 'none';
         }
     </script>
 </body>
